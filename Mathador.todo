@@ -1,0 +1,61 @@
+Mathador (Notions) :
+  - Sérialisation
+  - Gestion des fichiers
+  - Base de données
+  - LINQ
+  - Multithreading
+
+Regles du jeu :
+  Equipe : Dylan, Maxime, Florent
+
+  5 nombres | 4 opérateurs => Nombre cible
+  // Coup mathador => 4 opérateurs utilisés pour atteindre le nombre cible
+
+  --- ✄ -----------------------
+
+  3 minutes
+
+  --- ✄ -----------------------
+
+  Nombres entier et positifs
+
+  Générateur:
+    ☐ 3 nombres entre 1 et 12
+    ☐ 2 nombres entre 1 et 20
+    ☐ nombre cible entre 1 et 100
+    ☐ vérifier si le nombre peut etre atteint
+    ☐ Sauvegarder les tirages au format JSON
+
+    --- ✄ -----------------------
+
+    Interface utilisateur
+    ☐ Saisir son pseudo 
+    ☐ Lancer une partie
+    ☐ Tableau des scores
+        ☐ Base de donnée
+        ☐ Sauvegarder les scores en base
+
+
+Challenges:
+  ☐ Ajouter tableau statistique
+      ☐ Pourcentage d'utilisation des opérateurs
+      ☐ Temps moyens de résolution
+      ☐ Score moyen, min, max
+
+  ☐ Fin du timer, Afficher tableau exaustif de la partie
+
+Livrables:
+  ☐ Code source complet
+  ☐ Démonstration devant jury
+
+Evalutation:
+  ☐ Avancement
+  ☐ Qualité de développement
+  ☐ Qualité de la démonstration
+  ☐ Qualité du Trinome
+
+
+Version existante disponible en ligne :  
+  - http://www.mathador.fr/chrono.php  
+Solveur Mathador en ligne : 
+  - http://www.dcode.fr/solveur-mathador 
