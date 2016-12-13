@@ -5,6 +5,13 @@ Mathador (Notions) :
   - LINQ
   - Multithreading
 
+  les points au Mathador:
+  - Addition : 1 point
+  - Soustraction : 2 points
+  - Multiplication : 1 point 
+  - Division : 3 points
+  - L'utilisation des 4 opérateurs : 13
+
 Regles du jeu :
   Equipe : Dylan, Maxime, Florent
 
@@ -20,9 +27,9 @@ Regles du jeu :
   Nombres entier et positifs
 
   Générateur:
-    ☐ 3 nombres entre 1 et 12
-    ☐ 2 nombres entre 1 et 20
-    ☐ nombre cible entre 1 et 100
+    ✔ 3 nombres entre 1 et 12 @done (16-12-13 18:16)
+    ✔ 2 nombres entre 1 et 20 @done (16-12-13 18:16)
+    ✔ nombre cible entre 1 et 100 @done (16-12-13 18:16)
     ☐ vérifier si le nombre peut etre atteint
     ☐ Sauvegarder les tirages au format JSON
 
