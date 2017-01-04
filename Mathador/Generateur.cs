@@ -10,7 +10,7 @@ namespace Mathador
     {
         private List<int> FirstDice = new List<int>();
         private List<int> SecondDice = new List<int>();
-        private int TargetNumber;
+        public int TargetNumber { get; }
         private Random random = new Random();
 
         public Generateur()
@@ -31,14 +31,22 @@ namespace Mathador
             }
         }
 
+
+
         public override string ToString()
         {
-            string myGenerator = "";
-            FirstDice.ForEach(x => myGenerator += " "+x);
-            myGenerator +=" / ";
-            SecondDice.ForEach(x => myGenerator += " " + x);
+            var myGenerator = Tirage();
             myGenerator += " => "+ TargetNumber;
 
+            return myGenerator;
+        }
+
+        public string Tirage()
+        {
+            string myGenerator = "";
+            FirstDice.ForEach(x => myGenerator += " " + x);
+            myGenerator += " / ";
+            SecondDice.ForEach(x => myGenerator += " " + x);
             return myGenerator;
         }
     }

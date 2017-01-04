@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Schema, Version=2.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.Schema.2.0.8\lib\net45\Newtonsoft.Json.Schema.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="getPseudo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="getPseudo.Designer.cs">
+      <DependentUpon>getPseudo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Save.cs" />
     <Compile Include="InterfaceFront.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +68,9 @@
     <Compile Include="Interface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Solveur.cs" />
+    <EmbeddedResource Include="getPseudo.resx">
+      <DependentUpon>getPseudo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InterfaceFront.resx">
       <DependentUpon>InterfaceFront.cs</DependentUpon>
     </EmbeddedResource>
@@ -65,6 +83,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
