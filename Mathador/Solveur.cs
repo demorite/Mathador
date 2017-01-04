@@ -14,55 +14,256 @@ namespace Mathador
         }
         
         /*
-         * @function: solver
+         * @function: solve
          * @parameter: 
-         *  int[] n -> array of int with the 5 random values
-         *  int r -> result to find
+         *  int[] tab -> array of int with the 5 random values
+         *  int result -> result to find
          * @return: int -> if return 1 mathador hit possible, else return 0
          */
-        public static int solver(int[] n, int result)
+       public static int solve(int[] tab, int result)
 		{
-			bool loop_lock = true, 
-				find = false;
-			// n_lock = true;
-			int a, r, i = 0, x, z =0;
+			int i, j, r = 0, y, z;
 
-			for (x = 0; x < 120; x++)
+			for (y = 0; y < 24; y++)
 			{
-				if (!loop_lock)
+				for (i = 0; i < tab.Length; i++)
 				{
-					if (i == 0)
+					for (z = 0; z < 4; z++)
 					{
-						i = n[0];
-						z = Array.IndexOf(n, i);
+						switch (z)
+						{
+							case 0:
+								r = tab[0] * tab[1] + tab[2] - tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} * {1} + {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
 
+							case 1:
+								r = tab[0] + tab[1] * tab[2] - tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 2:
+								r = tab[0] + tab[1] - tab[2] * tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} - {2} * {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 3:
+								r = tab[0] + tab[1] - tab[2] / tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} - {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 4:
+								r = tab[0] - tab[1] + tab[2] / tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} - {1} + {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 5:
+								r = tab[0] + tab[1] - tab[2] / tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} - {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 6:
+								r = tab[0] + tab[1] / tab[2] - tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} / {2} - {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 7:
+								r = tab[0] + tab[1] / tab[2] * tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 8:
+								r = tab[0] / tab[1] + tab[2] * tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} / {1} + {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 9:
+								r = tab[0] + tab[1] / tab[2] * tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 10:
+								r = tab[0] + tab[1] * tab[2] / tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} * {2} / {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 11:
+								r = tab[0] + tab[1] * tab[2] - tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 12:
+								r = tab[0] * tab[1] + tab[2] - tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} * {1} + {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 13:
+								r = tab[0] * tab[1] - tab[2] + tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} * {1} - {2} + {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 14:
+								r = tab[0] * tab[1] - tab[2] / tab[3] + tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} * {1} - {2} / {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 15:
+								r = tab[0] - tab[1] * tab[2] / tab[3] + tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} - {1} * {2} / {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 16:
+								r = tab[0] - tab[1] / tab[2] * tab[3] + tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} - {1} / {2} * {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 17:
+								r = tab[0] - tab[1] / tab[2] + tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} - {1} / {2} + {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 18:
+								r = tab[0] / tab[1] - tab[2] + tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} / {1} - {2} + {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 19:
+								r = tab[0] / tab[1] + tab[2] - tab[3] * tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} / {1} + {2} - {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 20:
+								r = tab[0] / tab[1] + tab[2] * tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} / {1} + {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 21:
+								r = tab[0] + tab[1] / tab[2] * tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 22:
+								r = tab[0] + tab[1] * tab[2] / tab[3] - tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} * {2} / {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							case 23:
+								r = tab[0] + tab[1] * tab[2] - tab[3] / tab[4];
+								if (r == result)
+								{
+									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
+									return 1;
+								}
+								break;
+
+							default:
+								r = 0;
+								break;
+						}
 					}
 
-					if (z < 4)
+					//else reorder the array
+					if (i < 4)
 					{
-						a = n[z];
-						n[z] = n[z + 1];
-						n[z + 1] = a;
-						z++;
-					}
-					else
-					{
-						i = 0;
+						j = tab[i];
+						tab[i] = tab[i + 1];
+						tab[i + 1] = j;
 					}
 				}
-
-				r = (((n[0] * n[1]) + n[2]) - n[3]) / n[4];
-
-				Console.WriteLine("try_number_{5} = {0}, {1}, {2}, {3}, {4} result = {6}", n[0], n[1], n[2], n[3], n[4], x, r);
-
-
-				if (r == result)
-					find = true;
-				
-				loop_lock = false;
 			}
-			if (find)
-				return 1;
+
 			return 0;
 		}
     }
