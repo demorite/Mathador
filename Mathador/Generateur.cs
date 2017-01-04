@@ -10,7 +10,7 @@ namespace Mathador
     {
         private List<int> FirstDice = new List<int>();
         private List<int> SecondDice = new List<int>();
-        public int TargetNumber { get; }
+        public int TargetNumber { get; private set; }
         private Random random = new Random();
 
         public Generateur()
@@ -31,7 +31,13 @@ namespace Mathador
             }
         }
 
-
+        public List<int> getDices()
+        {
+            List<int> dices = new List<int>();
+            FirstDice.ForEach(x => dices.Add(x));
+            SecondDice.ForEach(x => dices.Add(x));
+            return dices;
+        }
 
         public override string ToString()
         {

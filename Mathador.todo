@@ -27,6 +27,20 @@ Regles du jeu :
 
   Nombres entier et positifs
 
+Sprites:
+  - Bouttons
+    ☐ Menu
+    ☐ Cible
+    ☐ HighScore
+    ✔ Score @done (17-01-04 12:08)
+    ☐ Dés
+    ☐ Temps
+    ✔ Opérateurs @done (17-01-04 12:09)
+    ☐ Retour
+    ☐ Passer
+
+ ☐ Background du jeu
+
   Générateur:
     ✔ 3 nombres entre 1 et 12 @done (16-12-13 18:16)
     ✔ 2 nombres entre 1 et 20 @done (16-12-13 18:16)
@@ -37,8 +51,16 @@ Regles du jeu :
     --- ✄ -----------------------
 
     Interface utilisateur
-    ☐ Saisir son pseudo 
-    ☐ Lancer une partie
+    ✔ Saisir son pseudo @done (17-01-04 12:04)
+    ✔ Lancer une partie @done (17-01-04 12:04)
+    ✔ Un seul nombre restant @done (17-01-04 12:06)
+    ☐ Cible atteinte
+    ☐ Cible manquée
+    ☐ Coups en temps réel
+    ☐ Ajout dans le JSON
+    ☐ Récupération du JSON pour afficher les scores
+    ☐ Ajout dans la Base
+    ☐ Récupération en base
     ☐ Tableau des scores
         ☐ Base de donnée
         ☐ Sauvegarder les scores en base
