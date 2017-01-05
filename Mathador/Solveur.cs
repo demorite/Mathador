@@ -28,7 +28,7 @@ namespace Mathador
 			{
 				for (i = 0; i < tab.Length; i++)
 				{
-					for (z = 0; z < 4; z++)
+					for (z = 0; z < 24; z++)
 					{
 						switch (z)
 						{
