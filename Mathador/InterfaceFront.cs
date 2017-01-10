@@ -34,7 +34,6 @@ namespace Mathador
         private Button mult_op;
         private Button div_op;
         private Label target_num;
-        private Label solution;
         private Save save;
 
         public InterfaceFront()
@@ -59,7 +58,6 @@ namespace Mathador
                 setDices(generated);
                 target_num.Text = Convert.ToString(generated.TargetNumber);
                 gamestart = true;
-                solution.Text = generated.solution;
             };
             formPseudo.Show();
         }
@@ -90,7 +88,6 @@ namespace Mathador
             this.mult_op = new System.Windows.Forms.Button();
             this.div_op = new System.Windows.Forms.Button();
             this.target_num = new System.Windows.Forms.Label();
-            this.solution = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -114,78 +111,90 @@ namespace Mathador
             // 
             // dice1
             // 
-            this.dice1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dice1.BackColor = System.Drawing.Color.Transparent;
+            this.dice1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.dice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dice1.Location = new System.Drawing.Point(294, 184);
+            this.dice1.Image = ((System.Drawing.Image)(resources.GetObject("dice1.Image")));
+            this.dice1.Location = new System.Drawing.Point(86, 214);
             this.dice1.MaximumSize = new System.Drawing.Size(70, 70);
-            this.dice1.MinimumSize = new System.Drawing.Size(70, 70);
+            this.dice1.MinimumSize = new System.Drawing.Size(150, 150);
             this.dice1.Name = "dice1";
-            this.dice1.Size = new System.Drawing.Size(70, 70);
+            this.dice1.Size = new System.Drawing.Size(150, 150);
             this.dice1.TabIndex = 3;
             this.dice1.UseVisualStyleBackColor = false;
             this.dice1.Click += new System.EventHandler(this.check_click);
             // 
             // dice2
             // 
-            this.dice2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dice2.BackColor = System.Drawing.Color.Transparent;
+            this.dice2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.dice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dice2.Location = new System.Drawing.Point(375, 184);
+            this.dice2.Image = ((System.Drawing.Image)(resources.GetObject("dice2.Image")));
+            this.dice2.Location = new System.Drawing.Point(261, 214);
             this.dice2.MaximumSize = new System.Drawing.Size(70, 70);
-            this.dice2.MinimumSize = new System.Drawing.Size(70, 70);
+            this.dice2.MinimumSize = new System.Drawing.Size(150, 150);
             this.dice2.Name = "dice2";
-            this.dice2.Size = new System.Drawing.Size(70, 70);
+            this.dice2.Size = new System.Drawing.Size(150, 150);
             this.dice2.TabIndex = 4;
             this.dice2.UseVisualStyleBackColor = false;
             this.dice2.Click += new System.EventHandler(this.check_click);
             // 
             // dice3
             // 
-            this.dice3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dice3.BackColor = System.Drawing.Color.Transparent;
+            this.dice3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.dice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dice3.Location = new System.Drawing.Point(456, 184);
+            this.dice3.Image = ((System.Drawing.Image)(resources.GetObject("dice3.Image")));
+            this.dice3.Location = new System.Drawing.Point(440, 214);
             this.dice3.MaximumSize = new System.Drawing.Size(70, 70);
-            this.dice3.MinimumSize = new System.Drawing.Size(70, 70);
+            this.dice3.MinimumSize = new System.Drawing.Size(150, 150);
             this.dice3.Name = "dice3";
-            this.dice3.Size = new System.Drawing.Size(70, 70);
+            this.dice3.Size = new System.Drawing.Size(150, 150);
             this.dice3.TabIndex = 5;
             this.dice3.UseVisualStyleBackColor = false;
             this.dice3.Click += new System.EventHandler(this.check_click);
             // 
             // dice4
             // 
-            this.dice4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dice4.BackColor = System.Drawing.Color.Transparent;
+            this.dice4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.dice4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dice4.Location = new System.Drawing.Point(537, 184);
+            this.dice4.Image = ((System.Drawing.Image)(resources.GetObject("dice4.Image")));
+            this.dice4.Location = new System.Drawing.Point(610, 214);
             this.dice4.MaximumSize = new System.Drawing.Size(70, 70);
-            this.dice4.MinimumSize = new System.Drawing.Size(70, 70);
+            this.dice4.MinimumSize = new System.Drawing.Size(150, 150);
             this.dice4.Name = "dice4";
-            this.dice4.Size = new System.Drawing.Size(70, 70);
+            this.dice4.Size = new System.Drawing.Size(150, 150);
             this.dice4.TabIndex = 6;
             this.dice4.UseVisualStyleBackColor = false;
             this.dice4.Click += new System.EventHandler(this.check_click);
             // 
             // dice5
             // 
-            this.dice5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.dice5.BackColor = System.Drawing.Color.Transparent;
+            this.dice5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.dice5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dice5.Location = new System.Drawing.Point(618, 184);
+            this.dice5.Image = ((System.Drawing.Image)(resources.GetObject("dice5.Image")));
+            this.dice5.Location = new System.Drawing.Point(779, 214);
             this.dice5.MaximumSize = new System.Drawing.Size(70, 70);
-            this.dice5.MinimumSize = new System.Drawing.Size(70, 70);
+            this.dice5.MinimumSize = new System.Drawing.Size(150, 150);
             this.dice5.Name = "dice5";
-            this.dice5.Size = new System.Drawing.Size(70, 70);
+            this.dice5.Size = new System.Drawing.Size(150, 150);
             this.dice5.TabIndex = 7;
             this.dice5.UseVisualStyleBackColor = false;
             this.dice5.Click += new System.EventHandler(this.check_click);
             // 
             // plus_op
             // 
-            this.plus_op.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.plus_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.plus_op.Location = new System.Drawing.Point(336, 330);
+            this.plus_op.BackColor = System.Drawing.Color.Transparent;
+            this.plus_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.plus_op.ForeColor = System.Drawing.Color.Black;
+            this.plus_op.Image = ((System.Drawing.Image)(resources.GetObject("plus_op.Image")));
+            this.plus_op.Location = new System.Drawing.Point(164, 430);
             this.plus_op.MaximumSize = new System.Drawing.Size(70, 70);
-            this.plus_op.MinimumSize = new System.Drawing.Size(70, 70);
+            this.plus_op.MinimumSize = new System.Drawing.Size(150, 150);
             this.plus_op.Name = "plus_op";
-            this.plus_op.Size = new System.Drawing.Size(70, 70);
+            this.plus_op.Size = new System.Drawing.Size(150, 150);
             this.plus_op.TabIndex = 8;
             this.plus_op.Text = "+";
             this.plus_op.UseVisualStyleBackColor = false;
@@ -193,13 +202,15 @@ namespace Mathador
             // 
             // moins_op
             // 
-            this.moins_op.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.moins_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.moins_op.Location = new System.Drawing.Point(417, 330);
+            this.moins_op.BackColor = System.Drawing.Color.Transparent;
+            this.moins_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.moins_op.ForeColor = System.Drawing.Color.Black;
+            this.moins_op.Image = ((System.Drawing.Image)(resources.GetObject("moins_op.Image")));
+            this.moins_op.Location = new System.Drawing.Point(343, 430);
             this.moins_op.MaximumSize = new System.Drawing.Size(70, 70);
-            this.moins_op.MinimumSize = new System.Drawing.Size(70, 70);
+            this.moins_op.MinimumSize = new System.Drawing.Size(150, 150);
             this.moins_op.Name = "moins_op";
-            this.moins_op.Size = new System.Drawing.Size(70, 70);
+            this.moins_op.Size = new System.Drawing.Size(150, 150);
             this.moins_op.TabIndex = 9;
             this.moins_op.Text = "-";
             this.moins_op.UseVisualStyleBackColor = false;
@@ -207,13 +218,15 @@ namespace Mathador
             // 
             // mult_op
             // 
-            this.mult_op.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.mult_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mult_op.Location = new System.Drawing.Point(498, 330);
+            this.mult_op.BackColor = System.Drawing.Color.Transparent;
+            this.mult_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mult_op.ForeColor = System.Drawing.Color.Black;
+            this.mult_op.Image = ((System.Drawing.Image)(resources.GetObject("mult_op.Image")));
+            this.mult_op.Location = new System.Drawing.Point(532, 430);
             this.mult_op.MaximumSize = new System.Drawing.Size(70, 70);
-            this.mult_op.MinimumSize = new System.Drawing.Size(70, 70);
+            this.mult_op.MinimumSize = new System.Drawing.Size(150, 150);
             this.mult_op.Name = "mult_op";
-            this.mult_op.Size = new System.Drawing.Size(70, 70);
+            this.mult_op.Size = new System.Drawing.Size(150, 150);
             this.mult_op.TabIndex = 10;
             this.mult_op.Text = "x";
             this.mult_op.UseVisualStyleBackColor = false;
@@ -221,13 +234,15 @@ namespace Mathador
             // 
             // div_op
             // 
-            this.div_op.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.div_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.div_op.Location = new System.Drawing.Point(579, 330);
+            this.div_op.BackColor = System.Drawing.Color.Transparent;
+            this.div_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.div_op.ForeColor = System.Drawing.Color.Black;
+            this.div_op.Image = ((System.Drawing.Image)(resources.GetObject("div_op.Image")));
+            this.div_op.Location = new System.Drawing.Point(712, 430);
             this.div_op.MaximumSize = new System.Drawing.Size(70, 70);
-            this.div_op.MinimumSize = new System.Drawing.Size(70, 70);
+            this.div_op.MinimumSize = new System.Drawing.Size(150, 150);
             this.div_op.Name = "div_op";
-            this.div_op.Size = new System.Drawing.Size(70, 70);
+            this.div_op.Size = new System.Drawing.Size(150, 150);
             this.div_op.TabIndex = 11;
             this.div_op.Text = ":";
             this.div_op.UseVisualStyleBackColor = false;
@@ -239,32 +254,26 @@ namespace Mathador
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.target_num.AutoSize = true;
-            this.target_num.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.target_num.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.target_num.Location = new System.Drawing.Point(455, 41);
+            this.target_num.BackColor = System.Drawing.Color.Transparent;
+            this.target_num.Font = new System.Drawing.Font("Microsoft PhagsPa", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.target_num.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.target_num.Image = ((System.Drawing.Image)(resources.GetObject("target_num.Image")));
+            this.target_num.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.target_num.Location = new System.Drawing.Point(440, 13);
             this.target_num.MaximumSize = new System.Drawing.Size(70, 70);
-            this.target_num.MinimumSize = new System.Drawing.Size(70, 70);
+            this.target_num.MinimumSize = new System.Drawing.Size(150, 200);
             this.target_num.Name = "target_num";
-            this.target_num.Size = new System.Drawing.Size(70, 70);
+            this.target_num.Size = new System.Drawing.Size(150, 200);
             this.target_num.TabIndex = 12;
             this.target_num.Text = "Cible";
             this.target_num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // solution
-            // 
-            this.solution.AutoSize = true;
-            this.solution.Location = new System.Drawing.Point(417, 431);
-            this.solution.Name = "solution";
-            this.solution.Size = new System.Drawing.Size(43, 13);
-            this.solution.TabIndex = 13;
-            this.solution.Text = "solution";
-            // 
             // InterfaceFront
             // 
+            this.BackColor = System.Drawing.Color.White;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 700);
-            this.Controls.Add(this.solution);
             this.Controls.Add(this.target_num);
             this.Controls.Add(this.div_op);
             this.Controls.Add(this.mult_op);
@@ -277,6 +286,7 @@ namespace Mathador
             this.Controls.Add(this.dice1);
             this.Controls.Add(this.pseudo);
             this.Controls.Add(this.b_genereate);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "InterfaceFront";
             this.ResumeLayout(false);
