@@ -34,6 +34,7 @@ namespace Mathador
         private Button mult_op;
         private Button div_op;
         private Label target_num;
+        private Label solution;
         private Save save;
 
         public InterfaceFront()
@@ -47,16 +48,18 @@ namespace Mathador
             resetAll();
 
 
-            Generateur generated = new Generateur();
 
             getPseudo formPseudo = new getPseudo();
             formPseudo.b_pseudo.Click += delegate (object o, EventArgs args)
             {
+                Generateur generated = new Generateur();
+
                 save = new Save(formPseudo.text_pseudo.Text, generated.Tirage(), generated.TargetNumber);
                 pseudo.Text = formPseudo.text_pseudo.Text != "" ? formPseudo.text_pseudo.Text  : "guest"+new Random().Next();
                 setDices(generated);
                 target_num.Text = Convert.ToString(generated.TargetNumber);
                 gamestart = true;
+                solution.Text = generated.solution;
             };
             formPseudo.Show();
         }
@@ -87,6 +90,7 @@ namespace Mathador
             this.mult_op = new System.Windows.Forms.Button();
             this.div_op = new System.Windows.Forms.Button();
             this.target_num = new System.Windows.Forms.Label();
+            this.solution = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -246,11 +250,21 @@ namespace Mathador
             this.target_num.Text = "Cible";
             this.target_num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // solution
+            // 
+            this.solution.AutoSize = true;
+            this.solution.Location = new System.Drawing.Point(417, 431);
+            this.solution.Name = "solution";
+            this.solution.Size = new System.Drawing.Size(43, 13);
+            this.solution.TabIndex = 13;
+            this.solution.Text = "solution";
+            // 
             // InterfaceFront
             // 
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 700);
+            this.Controls.Add(this.solution);
             this.Controls.Add(this.target_num);
             this.Controls.Add(this.div_op);
             this.Controls.Add(this.mult_op);
