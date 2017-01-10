@@ -18,9 +18,9 @@ namespace Mathador
          * @parameter: 
          *  int[] tab -> array of int with the 5 random values
          *  int result -> result to find
-         * @return: int -> if return 1 mathador hit possible, else return 0
+         * @return: bool -> if return true mathador is possible, else return false
          */
-       public static int solve(int[] tab, int result)
+       public static bool solve(int[] tab, int result)
 		{
 			int i, j, r = 0, y, z;
 
@@ -37,7 +37,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} * {1} + {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -46,7 +46,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -55,7 +55,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} - {2} * {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -64,7 +64,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} - {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -73,7 +73,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} - {1} + {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -82,7 +82,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} - {2} / {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -91,7 +91,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} / {2} - {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -100,7 +100,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -109,7 +109,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} / {1} + {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -118,7 +118,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -127,7 +127,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} * {2} / {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -136,7 +136,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -145,7 +145,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} * {1} + {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -154,7 +154,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} * {1} - {2} + {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -163,7 +163,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} * {1} - {2} / {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -172,7 +172,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} - {1} * {2} / {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -181,7 +181,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} - {1} / {2} * {3} + {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -190,7 +190,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} - {1} / {2} + {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -199,7 +199,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} / {1} - {2} + {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -208,7 +208,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} / {1} + {2} - {3} * {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -217,7 +217,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} / {1} + {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -226,7 +226,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} / {2} * {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -235,7 +235,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} * {2} / {3} - {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -244,7 +244,7 @@ namespace Mathador
 								if (r == result)
 								{
 									Console.WriteLine("{0} + {1} * {2} - {3} / {4} = {5}", tab[0], tab[1], tab[2], tab[3], tab[4], r);
-									return 1;
+									return true;
 								}
 								break;
 
@@ -264,7 +264,7 @@ namespace Mathador
 				}
 			}
 
-			return 0;
+			return false;
 		}
     }
 }
