@@ -24,7 +24,7 @@ namespace Mathador
 		{
 			int i, j, r = 0, y, z;
 
-			for (y = 0; y < 24; y++)
+			for (y = 0; y < 120; y++)
 			{
 				for (i = 0; i < tab.Length; i++)
 				{
