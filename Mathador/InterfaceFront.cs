@@ -39,7 +39,7 @@ namespace Mathador
         private Label highScore;
         private Save save;
         private int score;
-        private Label label1;
+        private Label homelabel;
         private string mathadorOp;
         public Timer timer1;
         private Label timer;
@@ -202,6 +202,9 @@ namespace Mathador
             timer1.Start();
             timer.Visible = true;
             sablier.Visible = true;
+
+            b_genereate.BackgroundImage = Image.FromFile(@"C:\Users\dylan\documents\visual studio 2015\Projects\Mathador\Mathador\assets\images\home.png");
+            homelabel.Text = "ReStart";
         }
 
         private void setDices(Generateur g)
@@ -234,7 +237,7 @@ namespace Mathador
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.highScore = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.homelabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer = new System.Windows.Forms.Label();
             this.sablier = new System.Windows.Forms.Panel();
@@ -475,16 +478,16 @@ namespace Mathador
             this.highScore.Text = "0";
             this.highScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label1
+            // homelabel
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Algerian", 20F);
-            this.label1.Location = new System.Drawing.Point(81, 141);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 27);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Menu";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.homelabel.BackColor = System.Drawing.Color.Transparent;
+            this.homelabel.Font = new System.Drawing.Font("Algerian", 20F);
+            this.homelabel.Location = new System.Drawing.Point(67, 141);
+            this.homelabel.Name = "homelabel";
+            this.homelabel.Size = new System.Drawing.Size(131, 27);
+            this.homelabel.TabIndex = 15;
+            this.homelabel.Text = "Start";
+            this.homelabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // timer1
             // 
@@ -521,7 +524,7 @@ namespace Mathador
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1028, 702);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.homelabel);
             this.Controls.Add(this.highScore);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
