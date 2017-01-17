@@ -34,7 +34,13 @@ namespace Mathador
         private Button mult_op;
         private Button div_op;
         private Label target_num;
+        private Panel panel1;
+        private Panel panel2;
+        private Label highScore;
         private Save save;
+        private int score;
+        private Label label1;
+        private string mathadorOp;
 
         public InterfaceFront()
         {
@@ -100,32 +106,42 @@ namespace Mathador
        
         private void b_genereate_Click(object sender, EventArgs e)
         {
-
-            getPseudo formPseudo = new getPseudo();
-            formPseudo.b_pseudo.Click += delegate (object o, EventArgs args)
+            if (pseudo.Text != "")
+                startGame();
+            else
             {
-                resetAll();
+                getPseudo formPseudo = new getPseudo();
+                formPseudo.b_pseudo.Click += delegate (object o, EventArgs args)
+                {
+                    resetAll();
 
 
-                Generateur generated = new Generateur();
+                    pseudo.Text = formPseudo.text_pseudo.Text != "" ? formPseudo.text_pseudo.Text : "guest" + new Random().Next();
 
-                save = new Save(formPseudo.text_pseudo.Text, generated.Tirage(), generated.TargetNumber);
-                pseudo.Text = formPseudo.text_pseudo.Text != "" ? formPseudo.text_pseudo.Text  : "guest"+new Random().Next();
-                setDices(generated);
-                target_num.Text = Convert.ToString(generated.TargetNumber);
-                gamestart = true;
-                b_genereate.Hide();
-                dice1     .Show();
-                dice2     .Show();
-                dice3     .Show();
-                dice4     .Show();
-                dice5     .Show();
-                plus_op   .Show();
-                moins_op  .Show();
-                mult_op   .Show();
-                div_op    .Show();
-            };
-            formPseudo.Show();
+                    startGame();
+                };
+                formPseudo.Show();
+
+            }
+        }
+
+        private void startGame()
+        {
+            Generateur generated = new Generateur();
+
+            save = new Save(pseudo.Text, generated.Tirage(), generated.TargetNumber);
+            setDices(generated);
+            target_num.Text = Convert.ToString(generated.TargetNumber);
+            gamestart = true;
+            dice1.Show();
+            dice2.Show();
+            dice3.Show();
+            dice4.Show();
+            dice5.Show();
+            plus_op.Show();
+            moins_op.Show();
+            mult_op.Show();
+            div_op.Show();
         }
 
         private void setDices(Generateur g)
@@ -154,6 +170,10 @@ namespace Mathador
             this.mult_op = new System.Windows.Forms.Button();
             this.div_op = new System.Windows.Forms.Button();
             this.target_num = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.highScore = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -163,9 +183,9 @@ namespace Mathador
             this.b_genereate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.b_genereate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.b_genereate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.b_genereate.Location = new System.Drawing.Point(448, 226);
+            this.b_genereate.Location = new System.Drawing.Point(27, 65);
             this.b_genereate.Name = "b_genereate";
-            this.b_genereate.Size = new System.Drawing.Size(142, 222);
+            this.b_genereate.Size = new System.Drawing.Size(131, 73);
             this.b_genereate.TabIndex = 1;
             this.b_genereate.UseVisualStyleBackColor = false;
             this.b_genereate.Click += new System.EventHandler(this.b_genereate_Click);
@@ -185,7 +205,7 @@ namespace Mathador
             this.dice1.FlatAppearance.BorderSize = 0;
             this.dice1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dice1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dice1.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice1.Image = ((System.Drawing.Image)(resources.GetObject("dice1.Image")));
             this.dice1.Location = new System.Drawing.Point(86, 214);
             this.dice1.MaximumSize = new System.Drawing.Size(70, 70);
@@ -203,7 +223,7 @@ namespace Mathador
             this.dice2.FlatAppearance.BorderSize = 0;
             this.dice2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dice2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dice2.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice2.Image = ((System.Drawing.Image)(resources.GetObject("dice2.Image")));
             this.dice2.Location = new System.Drawing.Point(261, 214);
             this.dice2.MaximumSize = new System.Drawing.Size(70, 70);
@@ -221,7 +241,7 @@ namespace Mathador
             this.dice3.FlatAppearance.BorderSize = 0;
             this.dice3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dice3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dice3.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice3.Image = ((System.Drawing.Image)(resources.GetObject("dice3.Image")));
             this.dice3.Location = new System.Drawing.Point(440, 214);
             this.dice3.MaximumSize = new System.Drawing.Size(70, 70);
@@ -239,7 +259,7 @@ namespace Mathador
             this.dice4.FlatAppearance.BorderSize = 0;
             this.dice4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dice4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dice4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dice4.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice4.Image = ((System.Drawing.Image)(resources.GetObject("dice4.Image")));
             this.dice4.Location = new System.Drawing.Point(610, 214);
             this.dice4.MaximumSize = new System.Drawing.Size(70, 70);
@@ -257,7 +277,7 @@ namespace Mathador
             this.dice5.FlatAppearance.BorderSize = 0;
             this.dice5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dice5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.dice5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dice5.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice5.Image = ((System.Drawing.Image)(resources.GetObject("dice5.Image")));
             this.dice5.Location = new System.Drawing.Point(779, 214);
             this.dice5.MaximumSize = new System.Drawing.Size(70, 70);
@@ -349,20 +369,59 @@ namespace Mathador
             this.target_num.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.target_num.AutoSize = true;
             this.target_num.BackColor = System.Drawing.Color.Transparent;
-            this.target_num.Font = new System.Drawing.Font("Microsoft PhagsPa", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.target_num.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.target_num.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.target_num.Image = ((System.Drawing.Image)(resources.GetObject("target_num.Image")));
             this.target_num.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.target_num.Location = new System.Drawing.Point(440, 13);
-            this.target_num.MaximumSize = new System.Drawing.Size(70, 70);
-            this.target_num.MinimumSize = new System.Drawing.Size(150, 200);
+            this.target_num.Location = new System.Drawing.Point(440, 133);
             this.target_num.Name = "target_num";
-            this.target_num.Size = new System.Drawing.Size(150, 200);
+            this.target_num.Size = new System.Drawing.Size(150, 35);
             this.target_num.TabIndex = 12;
             this.target_num.Text = "Cible";
             this.target_num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Transparent;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel1.Location = new System.Drawing.Point(712, 65);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(164, 65);
+            this.panel1.TabIndex = 13;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Transparent;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel2.Location = new System.Drawing.Point(461, 13);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(102, 117);
+            this.panel2.TabIndex = 14;
+            // 
+            // highScore
+            // 
+            this.highScore.BackColor = System.Drawing.Color.Transparent;
+            this.highScore.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highScore.Location = new System.Drawing.Point(712, 133);
+            this.highScore.Name = "highScore";
+            this.highScore.Size = new System.Drawing.Size(164, 35);
+            this.highScore.TabIndex = 0;
+            this.highScore.Text = "0";
+            this.highScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Algerian", 20F);
+            this.label1.Location = new System.Drawing.Point(41, 133);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 35);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Menu";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // InterfaceFront
             // 
@@ -370,6 +429,10 @@ namespace Mathador
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 700);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.highScore);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.target_num);
             this.Controls.Add(this.div_op);
             this.Controls.Add(this.mult_op);
@@ -424,16 +487,19 @@ namespace Mathador
                     {
                         case "+":
                             result = Convert.ToInt32(waitingNumber.Text) + Convert.ToInt32(b_sender.Text);
+                            if(!checkMathador("+")) score += 1;
                             break;
 
                         case "x":
                             result = Convert.ToInt32(waitingNumber.Text) * Convert.ToInt32(b_sender.Text);
+                            if (!checkMathador("x")) score += 1;
                             break;
 
                         case "-":
                             if (Convert.ToInt32(b_sender.Text) <= Convert.ToInt32(waitingNumber.Text))
                             {
                                 result = Convert.ToInt32(waitingNumber.Text) - Convert.ToInt32(b_sender.Text);
+                                if (!checkMathador("-")) score += 2;
                             }
                             break;
 
@@ -441,6 +507,7 @@ namespace Mathador
                             if (Convert.ToInt32(b_sender.Text) > 0 && Convert.ToInt32(waitingNumber.Text) % Convert.ToInt32(b_sender.Text) == 0)
                             {
                                 result = Convert.ToInt32(waitingNumber.Text) / Convert.ToInt32(b_sender.Text);
+                                if (!checkMathador(":")) score += 3;
                             }
                             break;
                     }
@@ -448,6 +515,7 @@ namespace Mathador
                     if (result != -1)
                     {
                         b_sender.Text = Convert.ToString(result);
+                        highScore.Text = score.ToString();
                         waitingNumber.Hide();
                     }
                     waitingNumber = null;
@@ -464,6 +532,21 @@ namespace Mathador
                     resetOp();
                 }
             }
+        }
+
+        private bool checkMathador(string s)
+        {
+            if (mathadorOp == null)
+                mathadorOp = s;
+            else if (mathadorOp.IndexOf(s) < 0)
+                mathadorOp += s;
+            if (mathadorOp.IndexOf('+') >= 0 && mathadorOp.IndexOf('-') >= 0 && mathadorOp.IndexOf('x') >= 0 && mathadorOp.IndexOf(':') >= 0)
+            {
+                score = 13;
+                return true;
+            }
+
+            return false;
         }
 
         private void resetButton()
@@ -500,6 +583,10 @@ namespace Mathador
             dice3.Show();
             dice4.Show();
             dice5.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
 
         }
     }
