@@ -34,13 +34,15 @@ namespace Mathador
         private Button mult_op;
         private Button div_op;
         private Label target_num;
+        public Timer timer1;
+        private Label timer;
         private Save save;
+        private Panel sablier;
+        private int countDown = 10;
 
         public InterfaceFront()
         {
             InitializeComponent();
-
-
 
             dice1    .Hide();
             dice2    .Hide();
@@ -97,6 +99,59 @@ namespace Mathador
 
         }
 
+        private void mainMenu()
+        {
+            dice1.Hide();
+            dice2.Hide();
+            dice3.Hide();
+            dice4.Hide();
+            dice5.Hide();
+            plus_op.Hide();
+            moins_op.Hide();
+            mult_op.Hide();
+            div_op.Hide();
+            b_genereate.TabStop = false;
+            b_genereate.FlatStyle = FlatStyle.Flat;
+            b_genereate.FlatAppearance.BorderSize = 0;
+
+
+            dice1.TabStop = false;
+            dice1.FlatStyle = FlatStyle.Flat;
+            dice1.FlatAppearance.BorderSize = 0;
+
+
+            dice2.TabStop = false;
+            dice2.FlatStyle = FlatStyle.Flat;
+            dice2.FlatAppearance.BorderSize = 0;
+
+            dice3.TabStop = false;
+            dice3.FlatStyle = FlatStyle.Flat;
+            dice3.FlatAppearance.BorderSize = 0;
+
+            dice4.TabStop = false;
+            dice4.FlatStyle = FlatStyle.Flat;
+            dice4.FlatAppearance.BorderSize = 0;
+
+            dice5.TabStop = false;
+            dice5.FlatStyle = FlatStyle.Flat;
+            dice5.FlatAppearance.BorderSize = 0;
+
+            plus_op.TabStop = false;
+            plus_op.FlatStyle = FlatStyle.Flat;
+            plus_op.FlatAppearance.BorderSize = 0;
+
+            moins_op.TabStop = false;
+            moins_op.FlatStyle = FlatStyle.Flat;
+            moins_op.FlatAppearance.BorderSize = 0;
+
+            mult_op.TabStop = false;
+            mult_op.FlatStyle = FlatStyle.Flat;
+            mult_op.FlatAppearance.BorderSize = 0;
+
+            div_op.TabStop = false;
+            div_op.FlatStyle = FlatStyle.Flat;
+            div_op.FlatAppearance.BorderSize = 0;
+        }
        
         private void b_genereate_Click(object sender, EventArgs e)
         {
@@ -106,7 +161,6 @@ namespace Mathador
             {
                 resetAll();
 
-
                 Generateur generated = new Generateur();
 
                 save = new Save(formPseudo.text_pseudo.Text, generated.Tirage(), generated.TargetNumber);
@@ -115,6 +169,11 @@ namespace Mathador
                 target_num.Text = Convert.ToString(generated.TargetNumber);
                 gamestart = true;
                 b_genereate.Hide();
+                timer1.Enabled = true;
+                timer.Enabled = true;
+                timer1.Start();
+                timer.Visible = true;
+                sablier.Visible = true;
                 dice1     .Show();
                 dice2     .Show();
                 dice3     .Show();
@@ -141,6 +200,7 @@ namespace Mathador
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfaceFront));
             this.b_genereate = new System.Windows.Forms.Button();
             this.pseudo = new System.Windows.Forms.Label();
@@ -154,6 +214,9 @@ namespace Mathador
             this.mult_op = new System.Windows.Forms.Button();
             this.div_op = new System.Windows.Forms.Button();
             this.target_num = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Label();
+            this.sablier = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -175,7 +238,7 @@ namespace Mathador
             this.pseudo.AutoSize = true;
             this.pseudo.Location = new System.Drawing.Point(12, 13);
             this.pseudo.Name = "pseudo";
-            this.pseudo.Size = new System.Drawing.Size(0, 13);
+            this.pseudo.Size = new System.Drawing.Size(0, 25);
             this.pseudo.TabIndex = 2;
             // 
             // dice1
@@ -364,12 +427,44 @@ namespace Mathador
             this.target_num.Text = "Cible";
             this.target_num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer
+            // 
+            this.timer.BackColor = System.Drawing.Color.Transparent;
+            this.timer.Enabled = false;
+            this.timer.Font = new System.Drawing.Font("Arial", 34F);
+            this.timer.Location = new System.Drawing.Point(171, 163);
+            this.timer.Name = "timer";
+            this.timer.Size = new System.Drawing.Size(143, 48);
+            this.timer.TabIndex = 13;
+            this.timer.Text = "60";
+            this.timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timer.Visible = false;
+            this.timer.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // sablier
+            // 
+            this.sablier.BackColor = System.Drawing.Color.Transparent;
+            this.sablier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sablier.BackgroundImage")));
+            this.sablier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.sablier.Location = new System.Drawing.Point(137, 62);
+            this.sablier.Name = "sablier";
+            this.sablier.Size = new System.Drawing.Size(200, 100);
+            this.sablier.TabIndex = 14;
+            this.sablier.Visible = false;
+            // 
             // InterfaceFront
             // 
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1024, 700);
+            this.ClientSize = new System.Drawing.Size(1028, 702);
+            this.Controls.Add(this.sablier);
+            this.Controls.Add(this.timer);
             this.Controls.Add(this.target_num);
             this.Controls.Add(this.div_op);
             this.Controls.Add(this.mult_op);
@@ -501,6 +596,23 @@ namespace Mathador
             dice4.Show();
             dice5.Show();
 
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            countDown--;
+            if (countDown == 0)
+            {
+                mainMenu();
+                timer1.Stop();
+            }
+            timer.Text = countDown.ToString();
+            
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
