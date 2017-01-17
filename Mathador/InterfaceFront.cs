@@ -39,18 +39,74 @@ namespace Mathador
         public InterfaceFront()
         {
             InitializeComponent();
+
+
+
+            dice1    .Hide();
+            dice2    .Hide();
+            dice3    .Hide();
+            dice4    .Hide();
+            dice5    .Hide();
+            plus_op  .Hide();
+            moins_op .Hide();
+            mult_op  .Hide();
+            div_op   .Hide();
+
+
+            b_genereate.TabStop = false;
+            b_genereate.FlatStyle = FlatStyle.Flat;
+            b_genereate.FlatAppearance.BorderSize = 0;
+
+
+            dice1.TabStop = false;
+            dice1.FlatStyle = FlatStyle.Flat;
+            dice1.FlatAppearance.BorderSize = 0;
+
+
+            dice2.TabStop = false;
+            dice2.FlatStyle = FlatStyle.Flat;
+            dice2.FlatAppearance.BorderSize = 0;
+
+            dice3.TabStop = false;
+            dice3.FlatStyle = FlatStyle.Flat;
+            dice3.FlatAppearance.BorderSize = 0;
+
+            dice4.TabStop = false;
+            dice4.FlatStyle = FlatStyle.Flat;
+            dice4.FlatAppearance.BorderSize = 0;
+
+            dice5.TabStop = false;
+            dice5.FlatStyle = FlatStyle.Flat;
+            dice5.FlatAppearance.BorderSize = 0;
+
+            plus_op.TabStop = false;
+            plus_op.FlatStyle = FlatStyle.Flat;
+            plus_op.FlatAppearance.BorderSize = 0;
+
+            moins_op.TabStop = false;
+            moins_op.FlatStyle = FlatStyle.Flat;
+            moins_op.FlatAppearance.BorderSize = 0;
+
+            mult_op.TabStop = false;
+            mult_op.FlatStyle = FlatStyle.Flat;
+            mult_op.FlatAppearance.BorderSize = 0;
+
+            div_op.TabStop = false;
+            div_op.FlatStyle = FlatStyle.Flat;
+            div_op.FlatAppearance.BorderSize = 0;
+
         }
 
        
         private void b_genereate_Click(object sender, EventArgs e)
         {
-            resetAll();
-
-
 
             getPseudo formPseudo = new getPseudo();
             formPseudo.b_pseudo.Click += delegate (object o, EventArgs args)
             {
+                resetAll();
+
+
                 Generateur generated = new Generateur();
 
                 save = new Save(formPseudo.text_pseudo.Text, generated.Tirage(), generated.TargetNumber);
@@ -58,6 +114,16 @@ namespace Mathador
                 setDices(generated);
                 target_num.Text = Convert.ToString(generated.TargetNumber);
                 gamestart = true;
+                b_genereate.Hide();
+                dice1     .Show();
+                dice2     .Show();
+                dice3     .Show();
+                dice4     .Show();
+                dice5     .Show();
+                plus_op   .Show();
+                moins_op  .Show();
+                mult_op   .Show();
+                div_op    .Show();
             };
             formPseudo.Show();
         }
@@ -92,12 +158,15 @@ namespace Mathador
             // 
             // b_genereate
             // 
-            this.b_genereate.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.b_genereate.Location = new System.Drawing.Point(937, 13);
+            this.b_genereate.BackColor = System.Drawing.Color.Transparent;
+            this.b_genereate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("b_genereate.BackgroundImage")));
+            this.b_genereate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.b_genereate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.b_genereate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.b_genereate.Location = new System.Drawing.Point(448, 226);
             this.b_genereate.Name = "b_genereate";
-            this.b_genereate.Size = new System.Drawing.Size(75, 23);
+            this.b_genereate.Size = new System.Drawing.Size(142, 222);
             this.b_genereate.TabIndex = 1;
-            this.b_genereate.Text = "Générer";
             this.b_genereate.UseVisualStyleBackColor = false;
             this.b_genereate.Click += new System.EventHandler(this.b_genereate_Click);
             // 
@@ -113,6 +182,9 @@ namespace Mathador
             // 
             this.dice1.BackColor = System.Drawing.Color.Transparent;
             this.dice1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dice1.FlatAppearance.BorderSize = 0;
+            this.dice1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dice1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dice1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice1.Image = ((System.Drawing.Image)(resources.GetObject("dice1.Image")));
             this.dice1.Location = new System.Drawing.Point(86, 214);
@@ -128,6 +200,9 @@ namespace Mathador
             // 
             this.dice2.BackColor = System.Drawing.Color.Transparent;
             this.dice2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dice2.FlatAppearance.BorderSize = 0;
+            this.dice2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dice2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dice2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice2.Image = ((System.Drawing.Image)(resources.GetObject("dice2.Image")));
             this.dice2.Location = new System.Drawing.Point(261, 214);
@@ -143,6 +218,9 @@ namespace Mathador
             // 
             this.dice3.BackColor = System.Drawing.Color.Transparent;
             this.dice3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dice3.FlatAppearance.BorderSize = 0;
+            this.dice3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dice3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dice3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice3.Image = ((System.Drawing.Image)(resources.GetObject("dice3.Image")));
             this.dice3.Location = new System.Drawing.Point(440, 214);
@@ -158,6 +236,9 @@ namespace Mathador
             // 
             this.dice4.BackColor = System.Drawing.Color.Transparent;
             this.dice4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dice4.FlatAppearance.BorderSize = 0;
+            this.dice4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dice4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dice4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice4.Image = ((System.Drawing.Image)(resources.GetObject("dice4.Image")));
             this.dice4.Location = new System.Drawing.Point(610, 214);
@@ -173,6 +254,9 @@ namespace Mathador
             // 
             this.dice5.BackColor = System.Drawing.Color.Transparent;
             this.dice5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.dice5.FlatAppearance.BorderSize = 0;
+            this.dice5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dice5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.dice5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dice5.Image = ((System.Drawing.Image)(resources.GetObject("dice5.Image")));
             this.dice5.Location = new System.Drawing.Point(779, 214);
@@ -187,6 +271,9 @@ namespace Mathador
             // plus_op
             // 
             this.plus_op.BackColor = System.Drawing.Color.Transparent;
+            this.plus_op.FlatAppearance.BorderSize = 0;
+            this.plus_op.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.plus_op.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.plus_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.plus_op.ForeColor = System.Drawing.Color.Black;
             this.plus_op.Image = ((System.Drawing.Image)(resources.GetObject("plus_op.Image")));
@@ -203,6 +290,9 @@ namespace Mathador
             // moins_op
             // 
             this.moins_op.BackColor = System.Drawing.Color.Transparent;
+            this.moins_op.FlatAppearance.BorderSize = 0;
+            this.moins_op.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.moins_op.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.moins_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.moins_op.ForeColor = System.Drawing.Color.Black;
             this.moins_op.Image = ((System.Drawing.Image)(resources.GetObject("moins_op.Image")));
@@ -219,6 +309,9 @@ namespace Mathador
             // mult_op
             // 
             this.mult_op.BackColor = System.Drawing.Color.Transparent;
+            this.mult_op.FlatAppearance.BorderSize = 0;
+            this.mult_op.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.mult_op.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.mult_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mult_op.ForeColor = System.Drawing.Color.Black;
             this.mult_op.Image = ((System.Drawing.Image)(resources.GetObject("mult_op.Image")));
@@ -235,6 +328,9 @@ namespace Mathador
             // div_op
             // 
             this.div_op.BackColor = System.Drawing.Color.Transparent;
+            this.div_op.FlatAppearance.BorderSize = 0;
+            this.div_op.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.div_op.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.div_op.Font = new System.Drawing.Font("Microsoft Sans Serif", 1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.div_op.ForeColor = System.Drawing.Color.Black;
             this.div_op.Image = ((System.Drawing.Image)(resources.GetObject("div_op.Image")));
@@ -270,7 +366,7 @@ namespace Mathador
             // 
             // InterfaceFront
             // 
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1024, 700);
@@ -372,20 +468,20 @@ namespace Mathador
 
         private void resetButton()
         {
-            dice1.BackColor = Color.WhiteSmoke;
-            dice2.BackColor = Color.WhiteSmoke;
-            dice3.BackColor = Color.WhiteSmoke;
-            dice4.BackColor = Color.WhiteSmoke;
-            dice5.BackColor = Color.WhiteSmoke;
-            
+            dice1.BackColor = Color.Transparent;
+            dice2.BackColor = Color.Transparent;
+            dice3.BackColor = Color.Transparent;
+            dice4.BackColor = Color.Transparent;
+            dice5.BackColor = Color.Transparent;
+
         }
 
         private void resetOp()
         {
-            plus_op.BackColor = Color.WhiteSmoke;
-            moins_op.BackColor = Color.WhiteSmoke;
-            mult_op.BackColor = Color.WhiteSmoke;
-            div_op.BackColor = Color.WhiteSmoke;
+            plus_op.BackColor = Color.Transparent;
+            moins_op.BackColor = Color.Transparent;
+            mult_op.BackColor = Color.Transparent;
+            div_op.BackColor = Color.Transparent;
         }
 
         private void resetAll()
