@@ -41,12 +41,14 @@ namespace Mathador
         private int score;
         private Label label1;
         private string mathadorOp;
+        public Timer timer1;
+        private Label timer;
+        private Panel sablier;
+        private int countDown = 10;
 
         public InterfaceFront()
         {
             InitializeComponent();
-
-
 
             dice1    .Hide();
             dice2    .Hide();
@@ -103,6 +105,59 @@ namespace Mathador
 
         }
 
+        private void mainMenu()
+        {
+            dice1.Hide();
+            dice2.Hide();
+            dice3.Hide();
+            dice4.Hide();
+            dice5.Hide();
+            plus_op.Hide();
+            moins_op.Hide();
+            mult_op.Hide();
+            div_op.Hide();
+            b_genereate.TabStop = false;
+            b_genereate.FlatStyle = FlatStyle.Flat;
+            b_genereate.FlatAppearance.BorderSize = 0;
+
+
+            dice1.TabStop = false;
+            dice1.FlatStyle = FlatStyle.Flat;
+            dice1.FlatAppearance.BorderSize = 0;
+
+
+            dice2.TabStop = false;
+            dice2.FlatStyle = FlatStyle.Flat;
+            dice2.FlatAppearance.BorderSize = 0;
+
+            dice3.TabStop = false;
+            dice3.FlatStyle = FlatStyle.Flat;
+            dice3.FlatAppearance.BorderSize = 0;
+
+            dice4.TabStop = false;
+            dice4.FlatStyle = FlatStyle.Flat;
+            dice4.FlatAppearance.BorderSize = 0;
+
+            dice5.TabStop = false;
+            dice5.FlatStyle = FlatStyle.Flat;
+            dice5.FlatAppearance.BorderSize = 0;
+
+            plus_op.TabStop = false;
+            plus_op.FlatStyle = FlatStyle.Flat;
+            plus_op.FlatAppearance.BorderSize = 0;
+
+            moins_op.TabStop = false;
+            moins_op.FlatStyle = FlatStyle.Flat;
+            moins_op.FlatAppearance.BorderSize = 0;
+
+            mult_op.TabStop = false;
+            mult_op.FlatStyle = FlatStyle.Flat;
+            mult_op.FlatAppearance.BorderSize = 0;
+
+            div_op.TabStop = false;
+            div_op.FlatStyle = FlatStyle.Flat;
+            div_op.FlatAppearance.BorderSize = 0;
+        }
        
         private void b_genereate_Click(object sender, EventArgs e)
         {
@@ -142,6 +197,11 @@ namespace Mathador
             moins_op.Show();
             mult_op.Show();
             div_op.Show();
+            timer1.Enabled = true;
+            timer.Enabled = true;
+            timer1.Start();
+            timer.Visible = true;
+            sablier.Visible = true;
         }
 
         private void setDices(Generateur g)
@@ -157,6 +217,7 @@ namespace Mathador
 
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfaceFront));
             this.b_genereate = new System.Windows.Forms.Button();
             this.pseudo = new System.Windows.Forms.Label();
@@ -174,6 +235,9 @@ namespace Mathador
             this.panel2 = new System.Windows.Forms.Panel();
             this.highScore = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer = new System.Windows.Forms.Label();
+            this.sablier = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -183,7 +247,7 @@ namespace Mathador
             this.b_genereate.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.b_genereate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.b_genereate.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.b_genereate.Location = new System.Drawing.Point(27, 65);
+            this.b_genereate.Location = new System.Drawing.Point(67, 65);
             this.b_genereate.Name = "b_genereate";
             this.b_genereate.Size = new System.Drawing.Size(131, 73);
             this.b_genereate.TabIndex = 1;
@@ -373,9 +437,9 @@ namespace Mathador
             this.target_num.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.target_num.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.target_num.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.target_num.Location = new System.Drawing.Point(440, 133);
+            this.target_num.Location = new System.Drawing.Point(440, 141);
             this.target_num.Name = "target_num";
-            this.target_num.Size = new System.Drawing.Size(150, 35);
+            this.target_num.Size = new System.Drawing.Size(150, 27);
             this.target_num.TabIndex = 12;
             this.target_num.Text = "Cible";
             this.target_num.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -387,7 +451,7 @@ namespace Mathador
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel1.Location = new System.Drawing.Point(712, 65);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(164, 65);
+            this.panel1.Size = new System.Drawing.Size(164, 73);
             this.panel1.TabIndex = 13;
             // 
             // panel2
@@ -397,16 +461,16 @@ namespace Mathador
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.panel2.Location = new System.Drawing.Point(461, 13);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(102, 117);
+            this.panel2.Size = new System.Drawing.Size(102, 125);
             this.panel2.TabIndex = 14;
             // 
             // highScore
             // 
             this.highScore.BackColor = System.Drawing.Color.Transparent;
             this.highScore.Font = new System.Drawing.Font("Algerian", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.highScore.Location = new System.Drawing.Point(712, 133);
+            this.highScore.Location = new System.Drawing.Point(712, 141);
             this.highScore.Name = "highScore";
-            this.highScore.Size = new System.Drawing.Size(164, 35);
+            this.highScore.Size = new System.Drawing.Size(164, 27);
             this.highScore.TabIndex = 0;
             this.highScore.Text = "0";
             this.highScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -415,24 +479,54 @@ namespace Mathador
             // 
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Algerian", 20F);
-            this.label1.Location = new System.Drawing.Point(41, 133);
+            this.label1.Location = new System.Drawing.Point(81, 141);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 35);
+            this.label1.Size = new System.Drawing.Size(100, 27);
             this.label1.TabIndex = 15;
             this.label1.Text = "Menu";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Interval = 1000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer
+            // 
+            this.timer.BackColor = System.Drawing.Color.Transparent;
+            this.timer.Enabled = false;
+            this.timer.Font = new System.Drawing.Font("Algerian", 20F);
+            this.timer.Location = new System.Drawing.Point(306, 141);
+            this.timer.Name = "timer";
+            this.timer.Size = new System.Drawing.Size(72, 27);
+            this.timer.TabIndex = 13;
+            this.timer.Text = "60";
+            this.timer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.timer.Visible = false;
+            // 
+            // sablier
+            // 
+            this.sablier.BackColor = System.Drawing.Color.Transparent;
+            this.sablier.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("sablier.BackgroundImage")));
+            this.sablier.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.sablier.Location = new System.Drawing.Point(306, 65);
+            this.sablier.Name = "sablier";
+            this.sablier.Size = new System.Drawing.Size(72, 73);
+            this.sablier.TabIndex = 14;
+            this.sablier.Visible = false;
             // 
             // InterfaceFront
             // 
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1024, 700);
+            this.ClientSize = new System.Drawing.Size(1028, 702);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.highScore);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.sablier);
+            this.Controls.Add(this.timer);
             this.Controls.Add(this.target_num);
             this.Controls.Add(this.div_op);
             this.Controls.Add(this.mult_op);
@@ -584,10 +678,18 @@ namespace Mathador
             dice4.Show();
             dice5.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
+        
+        private void timer1_Tick(object sender, EventArgs e)
         {
-
+            countDown--;
+            if (countDown == 0)
+            {
+                mainMenu();
+                timer1.Stop();
+            }
+            timer.Text = countDown.ToString();
+            
         }
+        
     }
 }
