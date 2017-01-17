@@ -14,6 +14,9 @@ namespace Mathador
         [STAThread]
         static void Main()
         {
+			
+			Database db = new Database();
+			db.createDB();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new InterfaceFront());

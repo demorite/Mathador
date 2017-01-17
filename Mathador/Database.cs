@@ -13,7 +13,14 @@ namespace Mathador
 		{
 		}
 
-		//Create the database of Mathador
+
+		/*
+		 * Create the database of Mathador
+		 * 
+         * @function: createDB
+         * @parameter: 
+         * 
+         */
 		public void createDB()
 		{
 
@@ -38,6 +45,15 @@ namespace Mathador
 			}
 		}
 
+		/*
+		 * Insert the user in the DB
+		 * 
+         * @function: insert
+         * @parameter: 
+         * User user -> user object
+         * 
+         */
+
 		public void insert(User user)
 		{
 			using (SqliteConnection con = new SqliteConnection(name_db))
@@ -45,11 +61,11 @@ namespace Mathador
 				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
-				string command = "INSERT INTO Users (pseudo, highscore, games_nb) VALUES (?,?,?)";
+				string command = "INSERT INTO Users (pseudo, highscore, games_nb) VALUES (@p, @hg, @gn)";
 				SqliteCommand insertSQL = new SqliteCommand(command, con);
-				insertSQL.Parameters.Add(user.pseudo);
-				insertSQL.Parameters.Add(user.highscore);
-				insertSQL.Parameters.Add(user.games_nb);
+				insertSQL.Parameters.AddWithValue("@p", user.pseudo);
+				insertSQL.Parameters.AddWithValue("@hg", user.highscore);
+				insertSQL.Parameters.AddWithValue("@gn", user.games_nb);
 
 				try
 				{
@@ -65,6 +81,15 @@ namespace Mathador
 			}
 		}
 
+
+		/*
+		 * Update the user in the DB
+		 * 
+         * @function: update
+         * @parameter: 
+         * User user -> user object
+         * 
+         */
 
 		public void update(User user)
 		{
