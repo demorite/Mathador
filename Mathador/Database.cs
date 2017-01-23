@@ -1,21 +1,17 @@
-﻿using System;
-using System.Data;
-using System.IO;
-using System.Data.Sql;
-using System.Data.SqlClient;
+using System;
+using System.Data.SQLite;
 
 namespace Mathador
 {
 
 	public class Database
 	{
-        
-        private string name_db = @"Data Source=file:Mathador.db";
 
-		//Constructor
-		public Database()
+        private string name_db = "URI=file:mathador.db";
+
+        //Constructor
+        public Database()
 		{
-
 		}
 
 
@@ -29,25 +25,24 @@ namespace Mathador
 		public void createDB()
 		{
 
-
-
-			using ( SqlConnection con = new SqlConnection(name_db) )
+			using (SQLiteConnection con = new SQLiteConnection(name_db))
 			{
-			    if (con.State == ConnectionState.Closed)
-			    {
-                    con.Open();
-                }
-
+				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
-				using (SqlCommand cmd = new SqlCommand())
-				{ 
-					cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Users(pseudo VARCHAR(255), highscore INT, games_nb INT)";
-					cmd.ExecuteNonQuery();
-					Console.WriteLine("Database > Table Users created");
-
+                try
+                {
+                    using (SQLiteCommand cmd = new SQLiteCommand("CREATE TABLE IF NOT EXISTS Users(pseudo VARCHAR(255), highscore INT, games_nb INT)", con))
+                    {
+                        cmd.ExecuteNonQuery();
+                        Console.WriteLine("Database > Table Users created");
+                    }
 				}
+                catch
+                {
 
+                    Console.WriteLine("Database > Table Users not created");
+                }
 				con.Close();
 				Console.WriteLine("Database > DB closed !");
 			}
@@ -64,13 +59,13 @@ namespace Mathador
 
 		public void insert(User user)
 		{
-			using (SqlConnection con = new SqlConnection(name_db))
+			using (SQLiteConnection con = new SQLiteConnection(name_db))
 			{
 				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
 				string command = "INSERT INTO Users (pseudo, highscore, games_nb) VALUES (@p, @hg, @gn)";
-				SqlCommand insertSQL = new SqlCommand(command, con);
+				SQLiteCommand insertSQL = new SQLiteCommand(command, con);
 				insertSQL.Parameters.AddWithValue("@p", user.pseudo);
 				insertSQL.Parameters.AddWithValue("@hg", user.highscore);
 				insertSQL.Parameters.AddWithValue("@gn", user.games_nb);
@@ -101,13 +96,13 @@ namespace Mathador
 
 		public void update(User user)
 		{
-			using (SqlConnection con = new SqlConnection(name_db))
+			using (SQLiteConnection con = new SQLiteConnection(name_db))
 			{
 				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
 				string command = "UPDATE Users SET highscore = @hg, games_nb= @gn WHERE pseudo= @p";
-				SqlCommand updateSQL = new SqlCommand(command, con);
+				SQLiteCommand updateSQL = new SQLiteCommand(command, con);
 				updateSQL.Parameters.AddWithValue("@hg", user.highscore);
 				updateSQL.Parameters.AddWithValue("@gn", user.games_nb);
 				updateSQL.Parameters.AddWithValue("@p", user.pseudo);
