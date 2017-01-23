@@ -29,23 +29,23 @@ Regles du jeu :
 
 Sprites:
   - Bouttons
-    ☐ Menu
-    ☐ Cible
-    ☐ HighScore
+    ✔ Menu @done (17-01-23 09:47)
+    ✔ Cible @done (17-01-23 09:47)
+    ✔ HighScore @done (17-01-23 09:47)
     ✔ Score @done (17-01-04 12:08)
-    ☐ Dés
-    ☐ Temps
+    ✔ Dés @done (17-01-23 09:47)
+    ✔ Temps @done (17-01-23 09:47)
     ✔ Opérateurs @done (17-01-04 12:09)
-    ☐ Retour
-    ☐ Passer
+    ✔ Retour @done (17-01-23 09:47)
+    ✔ Passer @done (17-01-23 09:47)
 
- ☐ Background du jeu
+ ✔ Background du jeu @done (17-01-23 09:47)
 
   Générateur:
     ✔ 3 nombres entre 1 et 12 @done (16-12-13 18:16)
     ✔ 2 nombres entre 1 et 20 @done (16-12-13 18:16)
     ✔ nombre cible entre 1 et 100 @done (16-12-13 18:16)
-    ☐ vérifier si le nombre peut etre atteint
+    ✔ vérifier si le nombre peut etre atteint @done (17-01-23 09:47)
     ☐ Sauvegarder les tirages au format JSON
 
     --- ✄ -----------------------

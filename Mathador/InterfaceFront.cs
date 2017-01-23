@@ -45,9 +45,14 @@ namespace Mathador
         private Label timer;
         private Panel sablier;
         private int countDown = 10;
+        private Database db;
 
         public InterfaceFront()
         {
+
+            // db = new Database();
+            // db.createDB();
+
             InitializeComponent();
 
             dice1    .Hide();

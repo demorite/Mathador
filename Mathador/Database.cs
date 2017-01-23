@@ -1,16 +1,21 @@
 ﻿using System;
-using Mono.Data.Sqlite;
+using System.Data;
+using System.IO;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 namespace Mathador
 {
 
 	public class Database
 	{
-		private string name_db = "Data Source=file:Mathador.db,version=3";
+        
+        private string name_db = @"Data Source=file:Mathador.db";
 
 		//Constructor
 		public Database()
 		{
+
 		}
 
 
@@ -26,14 +31,17 @@ namespace Mathador
 
 
 
-			using (SqliteConnection con = new SqliteConnection(name_db))
+			using ( SqlConnection con = new SqlConnection(name_db) )
 			{
-				con.Open();
+			    if (con.State == ConnectionState.Closed)
+			    {
+                    con.Open();
+                }
+
 				Console.WriteLine("Database > DB opened !");
 
-				using (SqliteCommand cmd = new SqliteCommand(con))
+				using (SqlCommand cmd = new SqlCommand())
 				{ 
-
 					cmd.CommandText = @"CREATE TABLE IF NOT EXISTS Users(pseudo VARCHAR(255), highscore INT, games_nb INT)";
 					cmd.ExecuteNonQuery();
 					Console.WriteLine("Database > Table Users created");
@@ -56,13 +64,13 @@ namespace Mathador
 
 		public void insert(User user)
 		{
-			using (SqliteConnection con = new SqliteConnection(name_db))
+			using (SqlConnection con = new SqlConnection(name_db))
 			{
 				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
 				string command = "INSERT INTO Users (pseudo, highscore, games_nb) VALUES (@p, @hg, @gn)";
-				SqliteCommand insertSQL = new SqliteCommand(command, con);
+				SqlCommand insertSQL = new SqlCommand(command, con);
 				insertSQL.Parameters.AddWithValue("@p", user.pseudo);
 				insertSQL.Parameters.AddWithValue("@hg", user.highscore);
 				insertSQL.Parameters.AddWithValue("@gn", user.games_nb);
@@ -93,13 +101,13 @@ namespace Mathador
 
 		public void update(User user)
 		{
-			using (SqliteConnection con = new SqliteConnection(name_db))
+			using (SqlConnection con = new SqlConnection(name_db))
 			{
 				con.Open();
 				Console.WriteLine("Database > DB opened !");
 
 				string command = "UPDATE Users SET highscore = @hg, games_nb= @gn WHERE pseudo= @p";
-				SqliteCommand updateSQL = new SqliteCommand(command, con);
+				SqlCommand updateSQL = new SqlCommand(command, con);
 				updateSQL.Parameters.AddWithValue("@hg", user.highscore);
 				updateSQL.Parameters.AddWithValue("@gn", user.games_nb);
 				updateSQL.Parameters.AddWithValue("@p", user.pseudo);
