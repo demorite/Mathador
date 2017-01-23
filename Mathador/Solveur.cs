@@ -22,7 +22,8 @@ namespace Mathador
          */
        public static bool solve(int[] tab, int result)
 		{
-			int i, j, r = 0, y, z;
+			int i, j, y, z;
+	       		float r=0;
 
 			for (y = 0; y < 120; y++)
 			{
