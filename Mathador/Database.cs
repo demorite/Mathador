@@ -121,6 +121,45 @@ namespace Mathador
 			}
 		
 		}
+		
+		
+		/*
+		 * Update the user in the DB
+		 * 
+		 * @function: getHighScore
+		 * @parameter: 
+		 * User user -> user object
+		 * @return: string[] -> result[] a table with the select's result
+		 */
+		
+		
+		public string[] getHighScore (User user)
+        {
+            using (SQLiteConnection con = new SQLiteConnection(name_db))
+            {
+                con.Open();
+                Console.WriteLine("Database > DB opened !");
+
+                string command = "SELECT * WHERE pseudo= @p";
+                SQLiteCommand selectSQL = new SQLiteCommand(command, con);
+                selectSQL.Parameters.AddWithValue("@p", user.pseudo);
+                SQLiteDataReader reader = selectSQL.ExecuteReader();
+                string[] result = { reader["pseudo"].ToString(), reader["highscore"].ToString(), reader["games_nb"].ToString()};
+
+                try
+                {
+                    selectSQL.ExecuteNonQuery();
+                    Console.WriteLine("Database > Get highscore of " + user.pseudo + " !");
+                    con.Close();
+                    Console.WriteLine("Database > DB closed !");
+                    return result;
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+            }
+        }
 
 	}
 }
