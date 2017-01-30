@@ -15,6 +15,7 @@ namespace Mathador
         public Form1()
         {
             InitializeComponent();
+
         }
     }
 }
