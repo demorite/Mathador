@@ -85,26 +85,31 @@ namespace Mathador
 			}
         }
 
-        public void getUser(string pseudo)
+        public User getUser(string pseudo)
         {
             using (SQLiteConnection con = new SQLiteConnection(name_db))
             {
                 con.Open();
                 Console.WriteLine("Database > DB opened !");
 
-                string sql = "SELECT * FROM Users WHERE pseudo = @p";
+                string sql = "SELECT * FROM Users WHERE pseudo = @p LIMIT 1";
                 SQLiteCommand command = new SQLiteCommand(sql, con);
                 command.Parameters.AddWithValue("@p", pseudo);
                 SQLiteDataReader reader = command.ExecuteReader();
+                User u = new User(pseudo);
                 while (reader.Read())
+                    u.games_nb = Convert.ToInt32(reader["games_nb"]); 
+                    u.highscore = Convert.ToInt32(reader["highscore"]); 
                     Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"]);
+                    
 
                 con.Close();
                 Console.WriteLine("Database > DB closed !");
+                return u;
             }
         }
 
-        public void getScores()
+        public List<User> getScores()
         {
             using (SQLiteConnection con = new SQLiteConnection(name_db))
             {
@@ -114,11 +119,19 @@ namespace Mathador
                 string sql = "SELECT * FROM Users ORDER BY highscore DESC";
                 SQLiteCommand command = new SQLiteCommand(sql, con);
                 SQLiteDataReader reader = command.ExecuteReader();
+                List<User> ul = new List<User>();
+                User u = null;
                 while (reader.Read())
+                    u = new User();
+                    u.pseudo = Convert.ToString(reader["pseudo"]);
+                    u.highscore = Convert.ToInt32(reader["highscore"]);
+                    u.games_nb = Convert.ToInt32(reader["games_nb"]);
+                    ul.Add(u);
                     Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"] + "\tNombre de parties: " + reader["games_nb"]);
 
                 con.Close();
                 Console.WriteLine("Database > DB closed !");
+                return ul;
             }
         }
 
