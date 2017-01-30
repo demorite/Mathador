@@ -97,11 +97,24 @@ namespace Mathador
                 command.Parameters.AddWithValue("@p", pseudo);
                 SQLiteDataReader reader = command.ExecuteReader();
                 User u = new User(pseudo);
-                while (reader.Read())
-                    u.games_nb = Convert.ToInt32(reader["games_nb"]); 
-                    u.highscore = Convert.ToInt32(reader["highscore"]); 
-                    Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"]);
-                    
+                if (reader.HasRows)
+                {
+
+                    while (reader.Read())
+                    {
+
+                        u.games_nb = Convert.ToInt32(reader["games_nb"]);
+                        u.highscore = Convert.ToInt32(reader["highscore"]);
+                        Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"]);
+
+                    }
+                }
+                else
+                {
+                    con.Close();
+                    return null;
+                }
+
 
                 con.Close();
                 Console.WriteLine("Database > DB closed !");
@@ -121,13 +134,23 @@ namespace Mathador
                 SQLiteDataReader reader = command.ExecuteReader();
                 List<User> ul = new List<User>();
                 User u = null;
-                while (reader.Read())
-                    u = new User();
-                    u.pseudo = Convert.ToString(reader["pseudo"]);
-                    u.highscore = Convert.ToInt32(reader["highscore"]);
-                    u.games_nb = Convert.ToInt32(reader["games_nb"]);
-                    ul.Add(u);
-                    Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"] + "\tNombre de parties: " + reader["games_nb"]);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        u = new User();
+                        u.pseudo = Convert.ToString(reader["pseudo"]);
+                        u.highscore = Convert.ToInt32(reader["highscore"]);
+                        u.games_nb = Convert.ToInt32(reader["games_nb"]);
+                        ul.Add(u);
+                        Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"] + "\tNombre de parties: " + reader["games_nb"]);
+                    }
+                }
+                else
+                {
+                    con.Close();
+                    return null;
+                }
 
                 con.Close();
                 Console.WriteLine("Database > DB closed !");

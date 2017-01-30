@@ -209,12 +209,20 @@ namespace Mathador
             timer.Visible = true;
             sablier.Visible = true;
 
-            user = new User(pseudo.Text);
-            user.games_nb =0;
-            user.highscore = 0;
+            user = db.getUser(pseudo.Text);
+            if (user == null)
+            {
+                user = new User();
+                user.pseudo = pseudo.Text;
+                user.highscore = 0;
+                user.games_nb = 0;
+                db.insert(user);
+            }
 
-            db.insert(user);
-            db.getUser("demorite");
+            user.games_nb++;
+            db.update(user);
+
+
 
             b_genereate.BackgroundImage = Image.FromFile(@"C:\Users\dylan\documents\visual studio 2015\Projects\Mathador\Mathador\assets\images\home.png");
             homelabel.Text = "ReStart";
@@ -560,6 +568,12 @@ namespace Mathador
             this.Name = "InterfaceFront";
             this.ResumeLayout(false);
             this.PerformLayout();
+
+        }
+
+
+        public void partyEnd()
+        {
 
         }
 
