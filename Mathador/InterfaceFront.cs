@@ -45,7 +45,7 @@ namespace Mathador
         public Timer timer1;
         private Label timer;
         private Panel sablier;
-        private int countDown = 10;
+        private int countDown = 60;
         private Database db;
 
         public InterfaceFront()
@@ -168,7 +168,10 @@ namespace Mathador
         private void b_genereate_Click(object sender, EventArgs e)
         {
             if (pseudo.Text != "")
+            {
                 startGame();
+                countDown = 60;
+            }
             else
             {
                 getPseudo formPseudo = new getPseudo();
@@ -224,7 +227,7 @@ namespace Mathador
 
 
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfaceFront));
-
+ 
             b_genereate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lechateauFiolet")));
             homelabel.Text = "ReStart";
         }
