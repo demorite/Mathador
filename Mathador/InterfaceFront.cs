@@ -20,6 +20,7 @@ namespace Mathador
         private Button waitingNumber = null;
         private Button waitingOperator = null;
         private bool gamestart = false;
+        private User user;
 
         private Button b_genereate;
         private Label pseudo;
@@ -50,8 +51,8 @@ namespace Mathador
         public InterfaceFront()
         {
 
-            // db = new Database();
-            // db.createDB();
+            db = new Database();
+            db.createDB();
 
             InitializeComponent();
 
@@ -207,6 +208,13 @@ namespace Mathador
             timer1.Start();
             timer.Visible = true;
             sablier.Visible = true;
+
+            user = new User(pseudo.Text);
+            user.games_nb =0;
+            user.highscore = 0;
+
+            db.insert(user);
+            db.getUser("demorite");
 
             b_genereate.BackgroundImage = Image.FromFile(@"C:\Users\dylan\documents\visual studio 2015\Projects\Mathador\Mathador\assets\images\home.png");
             homelabel.Text = "ReStart";

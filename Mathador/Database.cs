@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.SQLite;
 
 namespace Mathador
@@ -82,10 +83,46 @@ namespace Mathador
 					throw new Exception(ex.Message);
 				}
 			}
-		}
+        }
 
+        public void getUser(string pseudo)
+        {
+            using (SQLiteConnection con = new SQLiteConnection(name_db))
+            {
+                con.Open();
+                Console.WriteLine("Database > DB opened !");
 
-		/*
+                string sql = "SELECT * FROM Users WHERE pseudo = @p";
+                SQLiteCommand command = new SQLiteCommand(sql, con);
+                command.Parameters.AddWithValue("@p", pseudo);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                    Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"]);
+
+                con.Close();
+                Console.WriteLine("Database > DB closed !");
+            }
+        }
+
+        public void getScores()
+        {
+            using (SQLiteConnection con = new SQLiteConnection(name_db))
+            {
+                con.Open();
+                Console.WriteLine("Database > DB opened !");
+
+                string sql = "SELECT * FROM Users ORDER BY highscore DESC";
+                SQLiteCommand command = new SQLiteCommand(sql, con);
+                SQLiteDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                    Console.WriteLine("Name: " + reader["pseudo"] + "\tScore: " + reader["highscore"] + "\tNombre de parties: " + reader["games_nb"]);
+
+                con.Close();
+                Console.WriteLine("Database > DB closed !");
+            }
+        }
+
+        /*
 		 * Update the user in the DB
 		 * 
          * @function: update
@@ -94,7 +131,7 @@ namespace Mathador
          * 
          */
 
-		public void update(User user)
+        public void update(User user)
 		{
 			using (SQLiteConnection con = new SQLiteConnection(name_db))
 			{
@@ -160,6 +197,7 @@ namespace Mathador
                 }
             }
         }
+
 
 	}
 }
