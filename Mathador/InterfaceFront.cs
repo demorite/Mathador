@@ -46,6 +46,7 @@ namespace Mathador
         private Label timer;
         private Panel sablier;
         private int countDown = 60;
+        private Button button1;
         private Database db;
 
         public InterfaceFront()
@@ -266,6 +267,7 @@ namespace Mathador
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer = new System.Windows.Forms.Label();
             this.sablier = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // b_genereate
@@ -543,12 +545,25 @@ namespace Mathador
             this.sablier.TabIndex = 14;
             this.sablier.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.PeachPuff;
+            this.button1.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(476, 644);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 46);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Scores";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // InterfaceFront
             // 
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1028, 702);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.homelabel);
             this.Controls.Add(this.highScore);
             this.Controls.Add(this.panel2);
@@ -645,8 +660,14 @@ namespace Mathador
                         b_sender.Text = Convert.ToString(result);
                         highScore.Text = score.ToString();
                         waitingNumber.Hide();
-                        user.highscore = score;
-                        db.update(user);
+
+
+                        User user_temp = db.getUser(user.pseudo);
+                        if (user_temp.highscore < user.highscore)
+                        {
+                            user.highscore = score;
+                            db.update(user);
+                        }
                     }
                     waitingNumber = null;
                     waitingOperator = null;
@@ -726,6 +747,13 @@ namespace Mathador
             timer.Text = countDown.ToString();
             
         }
-        
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            List<User> ul = db.getScores();
+            Form2 f = new Form2();
+            f.setListe(ul);
+            f.Show();
+        }
     }
 }
