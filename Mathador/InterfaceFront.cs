@@ -20,6 +20,7 @@ namespace Mathador
         private Button waitingNumber = null;
         private Button waitingOperator = null;
         private bool gamestart = false;
+        private int remainingDices = 5;
         private User user;
 
         private Button b_genereate;
@@ -193,7 +194,7 @@ namespace Mathador
         private void startGame()
         {
             Generateur generated = new Generateur();
-
+            remainingDices = 5;
             save = new Save(pseudo.Text, generated.Tirage(), generated.TargetNumber);
             setDices(generated);
             target_num.Text = Convert.ToString(generated.TargetNumber);
@@ -657,16 +658,31 @@ namespace Mathador
 
                     if (result != -1)
                     {
+
+
                         b_sender.Text = Convert.ToString(result);
-                        highScore.Text = score.ToString();
                         waitingNumber.Hide();
 
-
-                        User user_temp = db.getUser(user.pseudo);
-                        if (user_temp.highscore < user.highscore)
+                        if (remainingDices > 2)
                         {
-                            user.highscore = score;
-                            db.update(user);
+                            remainingDices -= 1;
+                        }
+                        else
+                        {
+                            if (Convert.ToInt32(b_sender.Text) == Convert.ToInt32(target_num.Text))
+                            {
+                                highScore.Text = score.ToString();
+                                User user_temp = db.getUser(user.pseudo);
+                                if (user_temp.highscore < user.highscore)
+                                {
+                                    user.highscore = score;
+                                    db.update(user);
+                                }
+                            }
+                            else
+                            {
+                                startGame();
+                            }
                         }
                     }
                     waitingNumber = null;
