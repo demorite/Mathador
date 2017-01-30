@@ -23,7 +23,7 @@ namespace Mathador
 
 			if (datas != null) {
 
-				listBox1.DataSource = datas
+				listBox1.DataSource = datas;
 			}
 
         }
