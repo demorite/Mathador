@@ -223,8 +223,9 @@ namespace Mathador
             db.update(user);
 
 
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InterfaceFront));
 
-            b_genereate.BackgroundImage = Image.FromFile(@"C:\Users\dylan\documents\visual studio 2015\Projects\Mathador\Mathador\assets\images\home.png");
+            b_genereate.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("lechateauFiolet")));
             homelabel.Text = "ReStart";
         }
 
@@ -641,6 +642,8 @@ namespace Mathador
                         b_sender.Text = Convert.ToString(result);
                         highScore.Text = score.ToString();
                         waitingNumber.Hide();
+                        user.highscore = score;
+                        db.update(user);
                     }
                     waitingNumber = null;
                     waitingOperator = null;
